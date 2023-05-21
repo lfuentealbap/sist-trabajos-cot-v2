@@ -17,6 +17,7 @@ dotenv.config();
 //importar rutas
 const clienteRoutes = require("./src/routes/clienteRoutes.js");
 const usuarioRoutes = require("./src/routes/usuarioRoutes.js")
+const trabajoRoutes = require("./src/routes/trabajoRoutes.js")
 const app = express();
 const port = process.env.API_PORT;
 //Activar cors para permitir conexiones en otros dispositivos
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 //Habilitar rutas con express
 app.use("/api", clienteRoutes);
 app.use("/api", usuarioRoutes);
+app.use("/api", trabajoRoutes);
 //Realizar Conexión a mongodb
 const db_host = process.env.DB_HOST;
 const db_port = process.env.DB_PORT;
