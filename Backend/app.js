@@ -40,6 +40,6 @@ mongoose
   );
 //Verificar si el puerto está activado para servir información
 app.listen(port, () => {
-  console.log(`Servidor conectado a http://${db_host}:${port}`);
+  console.log(`Servidor conectado`);
 });
 module.exports = app;
