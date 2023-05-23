@@ -16,7 +16,8 @@ const listarUsuarios = (req, res) => {
 const crearUsuario = async (req, res) => {
   usuario = new Usuario();
   const passNH = req.body.password;//Contraseña no encriptada
-  const passH = await bcrypt.hash(passNH, process.env.SALT);//Contraseña encriptada
+  const salt = Number(process.env.SALT);//Sal para encriptar
+  const passH = await bcrypt.hash(passNH, salt);//Contraseña encriptada
   usuario.nombres = req.body.nombres
   usuario.apellidos = req.body.apellidos;
   usuario.rut = req.body.rut;
@@ -38,7 +39,8 @@ const crearUsuario = async (req, res) => {
 const actualizarUsuario = async (req, res) => {
   let id = req.params._id;
   const passNH = req.body.password;//Contraseña no encriptada
-  const passH = await bcrypt.hash(passNH, process.env.SALT);//Contraseña encriptada con sal
+  const salt = Number(process.env.SALT);//Sal para encriptar
+  const passH = await bcrypt.hash(passNH, salt);//Contraseña encriptada con sal
   let nombres = req.body.nombre_completo;
   let apellidos = req.body.apellidos;
   let rut = req.body.rut;
